@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Tres Leyes de Newton</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide {
+            display: none;
+            padding: 40px;
+            min-height: 600px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 2em;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.4em;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .example {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(102, 126, 234, 0.1);
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-counter {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .intro-slide {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 15px;
+        }
+
+        .newton-portrait {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Introducción -->
+        <div class="slide active intro-slide">
+            <div class="newton-portrait">🍎</div>
+            <h1>Las Tres Leyes de Newton</h1>
+            <p style="font-size: 1.3em; margin: 30px 0;">Fundamentos de la Mecánica Clásica</p>
+            <p><strong>Isaac Newton (1642-1727)</strong></p>
+            <p>Físico y matemático inglés que revolucionó nuestra comprensión del movimiento y las fuerzas.</p>
+        </div>
+
+        <!-- Slide 2: Primera Ley -->
+        <div class="slide">
+            <h2>Primera Ley de Newton</h2>
+            <h3>Ley de la Inercia</h3>
+            
+            <div class="formula">
+                "Un objeto en reposo permanece en reposo, y un objeto en movimiento permanece en movimiento a velocidad constante, a menos que actúe sobre él una fuerza externa neta."
+            </div>
+
+            <h3>Conceptos Clave:</h3>
+            <ul>
+                <li><span class="highlight">Inercia:</span> Tendencia de los objetos a resistir cambios en su estado de movimiento</li>
+                <li><span class="highlight">Fuerza neta:</span> Suma vectorial de todas las fuerzas que actúan sobre un objeto</li>
+                <li>Si la fuerza neta es cero, la aceleración es cero</li>
+            </ul>
+
+            <div class="example">
+                <strong>Ejemplo:</strong> Un libro sobre una mesa permanece en reposo hasta que alguien lo empuje. Un disco de hockey sobre hielo se desliza con velocidad constante hasta que la fricción lo detiene.
+            </div>
+        </div>
+
+        <!-- Slide 3: Segunda Ley -->
+        <div class="slide">
+            <h2>Segunda Ley de Newton</h2>
+            <h3>Ley de la Fuerza</h3>
+            
+            <div class="formula">
+                F = m × a
+                <br><br>
+                <small>Fuerza = Masa × Aceleración</small>
+            </div>
+
+            <h3>Interpretación:</h3>
+            <ul>
+                <li>La <span class="highlight">fuerza neta</span> aplicada a un objeto es directamente proporcional a su aceleración</li>
+                <li>La aceleración es inversamente proporcional a la masa del objeto</li>
+                <li>La aceleración tiene la misma dirección que la fuerza neta aplicada</li>
+            </ul>
+
+            <div class="example">
+                <strong>Ejemplo:</strong> Para acelerar un automóvil más pesado a la misma velocidad que uno ligero, necesitas aplicar más fuerza. Si empujas con la misma fuerza, el auto ligero acelerará más rápido.
+            </div>
+        </div>
+
+        <!-- Slide 4: Tercera Ley -->
+        <div class="slide">
+            <h2>Tercera Ley de Newton</h2>
+            <h3>Ley de Acción y Reacción</h3>
+            
+            <div class="formula">
+                "Para cada acción hay una reacción igual y opuesta"
+                <br><br>
+                F₁₂ = -F₂₁
+            </div>
+
+            <h3>Características:</h3>
+            <ul>
+                <li>Las fuerzas siempre actúan en <span class="highlight">pares</span></li>
+                <li>Son <span class="highlight">iguales en magnitud</span> pero opuestas en dirección</li>
+                <li>Actúan sobre <span class="highlight">objetos diferentes</span></li>
+                <li>Son simultáneas (ocurren al mismo tiempo)</li>
+            </ul>
+
+            <div class="example">
+                <strong>Ejemplo:</strong> Al caminar, empujas el suelo hacia atrás (acción) y el suelo te empuja hacia adelante (reacción). Los cohetes funcionan expulsando gases hacia abajo, lo que los impulsa hacia arriba.
+            </div>
+        </div>
+
+        <!-- Slide 5: Aplicaciones -->
+        <div class="slide">
+            <h2>Aplicaciones en la Vida Cotidiana</h2>
+
+            <h3>🚗 Primera Ley:</h3>
+            <ul>
+                <li>Cinturones de seguridad en automóviles</li>
+                <li>Reposacabezas en asientos</li>
+                <li>Objetos que se deslizan en frenazos bruscos</li>
+            </ul>
+
+            <h3>⚡ Segunda Ley:</h3>
+            <ul>
+                <li>Diseño de motores y sistemas de propulsión</li>
+                <li>Cálculo de fuerzas en estructuras</li>
+                <li>Deportes: lanzamiento de proyectiles</li>
+            </ul>
+
+            <h3>🚀 Tercera Ley:</h3>
+            <ul>
+                <li>Propulsión de cohetes y aviones</li>
+                <li>Natación y caminata</li>
+                <li>Retroceso de armas de fuego</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6: Resumen -->
+        <div class="slide">
+            <h2>Resumen</h2>
+
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 30px; border-radius: 15px;">
+                <h3>🔹 Primera Ley (Inercia):</h3>
+                <p>Los objetos mantienen su estado de movimiento a menos que una fuerza los cambie.</p>
+
+                <h3>🔹 Segunda Ley (F = ma):</h3>
+                <p>La fuerza es proporcional a la masa y aceleración del objeto.</p>
+
+                <h3>🔹 Tercera Ley (Acción-Reacción):</h3>
+                <p>Toda acción tiene una reacción igual y opuesta.</p>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; font-size: 1.2em; font-weight: bold; color: #667eea;">
+                Estas leyes son la base de toda la mecánica clásica y siguen siendo fundamentales en la física moderna.
+            </p>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <span class="slide-counter">
+                <span id="currentSlide">1</span> de <span id="totalSlides">6</span>
+            </span>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
